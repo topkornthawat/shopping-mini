@@ -30,7 +30,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
     // not a derived-state update) - safe to set state directly here.
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (raw) setLines(JSON.parse(raw));
     } catch {
       // ignore corrupt storage
