@@ -31,9 +31,16 @@ export async function middleware(request: NextRequest) {
 
   const path = request.nextUrl.pathname;
   const isAdminPath = path.startsWith("/admin") && path !== "/admin/login";
+  const isAccountPath = path.startsWith("/account");
 
   if (isAdminPath && !user) {
     const loginUrl = new URL("/admin/login", request.url);
+    return NextResponse.redirect(loginUrl);
+  }
+
+  if (isAccountPath && !user) {
+    const loginUrl = new URL("/login", request.url);
+    loginUrl.searchParams.set("next", path);
     return NextResponse.redirect(loginUrl);
   }
 
@@ -41,5 +48,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/account/:path*"],
 };
