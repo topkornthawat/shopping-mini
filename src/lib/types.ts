@@ -46,9 +46,17 @@ export const STATUS_COLOR: Record<OrderStatus, string> = {
   cancelled: "bg-neutral-200 text-neutral-600 border-neutral-300",
 };
 
+export type Profile = {
+  id: string;
+  name: string;
+  phone: string;
+  address: string;
+};
+
 export type Order = {
   id: string;
   order_no: string;
+  user_id: string | null;
   customer_name: string;
   customer_phone: string;
   customer_address: string;
