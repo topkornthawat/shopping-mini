@@ -351,7 +351,7 @@ function PromoHint({ nextTier }: { nextTier: CartPromotion | null }) {
   if (!nextTier) return null;
   return (
     <div className="mt-4 rounded-xl border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-800">
-      🎁 ซื้อเพิ่มอีก{" "}
+      🎁 ซื้อครบ{" "}
       <span className="font-semibold">
         {formatTHB(nextTier.min_subtotal)}
       </span>{" "}
